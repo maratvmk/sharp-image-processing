@@ -35,15 +35,9 @@ async function cropImage(url, outputPath) {
         left = Math.floor((width - newWidth) / 2);
     }
 
-    sharpChain
+    return sharpChain
         .extract({ left, top, width: newWidth, height: newHeight })
-        .toFile(outputPath, (err, info) => {
-            if (err) {
-                console.error(err);
-            } else {
-                console.log('Image cropped successfully!');
-            }
-        });
+        .toBuffer();
 }
 
 const url = 'https://cdn.discordapp.com/attachments/995431274267279440/1151940467068514314/rrrdi_A_visualization_of_a_clogged_artery_or_a_heart_with_chole_1a9b3a7e-5253-4dea-9a54-41870a0774c1.png';
