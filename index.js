@@ -17,6 +17,7 @@ async function cropImage(url, outputPath) {
     let newWidth = width;
     let newHeight = height;
 
+    // resize image to max IMAGE_MAX_WIDTH
     if (width > IMAGE_MAX_WIDTH) {
         height = newHeight = Math.floor(height * IMAGE_MAX_WIDTH / width);
         width = newWidth = IMAGE_MAX_WIDTH;
@@ -24,6 +25,7 @@ async function cropImage(url, outputPath) {
         sharpChain = sharpChain.resize(IMAGE_MAX_WIDTH, height);
     }
 
+    // crop image params
     if (ratio < POST_MIN_RATIO) {
         newHeight = Math.floor(width / 0.8);
         top = Math.floor((height - newHeight) / 2);
